@@ -15,11 +15,14 @@ class FileDownloaderTest {
 
     private Injector injector = Guice.createInjector(DownloaderModule.builder().build());
 
-    private static final String SMALL_FILE_URL = "https://raw.githubusercontent.com/juancho85/csv-converter/master/src/main/resources/examples/csvs/books.csv";
+    private static final String SMALL_FILE_URL = "https://raw.githubusercontent.com/juancho85/downloader/master/src/test/resources/examples/csvs/books.csv";
     private static final String SMALL_FILE_NAME = "/tmp/csvs/books.csv";
 
-    private static final String MEDIUM_FILE_URL = "https://github.com/juancho85/csv-converter/raw/master/src/main/resources/examples/csvs/ratings-1-m.csv";
-    private static final String MEDIUM_FILE_NAME = "/tmp/csvs/ratings.csv";
+    private static final String MEDIUM_FILE_URL = "https://raw.githubusercontent.com/juancho85/downloader/master/src/test/resources/examples/csvs/movies.csv";
+    private static final String MEDIUM_FILE_NAME = "/tmp/csvs/movies.csv";
+
+    private static final String LARGE_FILE_URL = "https://raw.githubusercontent.com/juancho85/downloader/master/src/test/resources/examples/csvs/ratings.csv";
+    private static final String LARGE_FILE_NAME = "/tmp/csvs/ratings.csv";
 
     @ParameterizedTest
     @MethodSource("provideUrlsAndPaths")
@@ -45,7 +48,8 @@ class FileDownloaderTest {
     private static Stream<Arguments> provideUrlsAndPaths() {
         return Stream.of(
                 Arguments.of(SMALL_FILE_URL, SMALL_FILE_NAME),
-                Arguments.of(MEDIUM_FILE_URL, MEDIUM_FILE_NAME)
+                Arguments.of(MEDIUM_FILE_URL, MEDIUM_FILE_NAME),
+                Arguments.of(LARGE_FILE_URL, LARGE_FILE_NAME)
         );
     }
 
